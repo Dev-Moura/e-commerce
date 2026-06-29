@@ -16,13 +16,16 @@ spec:
       containers:
       - name: mongodb
         image: mongo:latest
+        args: ["--replSet", "rs0", "--bind_ip_all"]
         ports:
         - containerPort: 27017
-        env:
-        - name: MONGO_INITDB_ROOT_USERNAME
-          value: "mongo"
-        - name: MONGO_INITDB_ROOT_PASSWORD
-          value: "admin"
+        volumeMounts:
+        - name: mongo-storage
+          mountPath: /data/db
+      volumes:
+      - name: mongo-storage
+        emptyDir: {} # No Minikube, isso cria um volume temporário.
+                     # Use PersistentVolumeClaim para persistência real em produção.
 ---
 apiVersion: v1
 kind: Service

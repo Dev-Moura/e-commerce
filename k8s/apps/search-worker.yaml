@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: search-worker
+  namespace: apps
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: search-worker
+  template:
+    metadata:
+      labels:
+        app: search-worker
+    spec:
+      containers:
+      - name: search-worker
+        image: search-worker:latest
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: RABBITMQ_URL
+          value: "amqp://rabbitmq-service.infra.svc.cluster.local:5672"
+        - name: ELASTICSEARCH_URL
+          value: "http://elasticsearch-service.infra.svc.cluster.local:9200"
