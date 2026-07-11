@@ -1,7 +1,9 @@
 {
-  "name": "product-service",
+  "name": "payment-service",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "Payment processing service with circuit breaker and idempotency checks",
+  "main": "src/server.ts",
+  "type": "module",
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "start": "tsx src/server.ts",
@@ -12,19 +14,19 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module",
   "dependencies": {
     "amqplib": "^0.10.5",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
-    "mongoose": "^9.7.3"
+    "pg": "^8.12.0"
   },
   "devDependencies": {
     "@types/amqplib": "^0.10.6",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/node": "^26.0.1",
+    "@types/pg": "^8.11.6",
     "@types/supertest": "^6.0.2",
     "@vitest/coverage-v8": "^3.2.4",
     "supertest": "^7.1.0",
@@ -35,6 +37,5 @@
   "vitest": {
     "environment": "node",
     "include": ["src/tests/**/*.test.ts"]
-  },
-  "description": ""
+  }
 }

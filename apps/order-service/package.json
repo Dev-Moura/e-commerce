@@ -1,7 +1,9 @@
 {
-  "name": "product-service",
+  "name": "order-service",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "Order management service",
+  "main": "src/server.ts",
+  "type": "module",
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "start": "tsx src/server.ts",
@@ -12,7 +14,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module",
   "dependencies": {
     "amqplib": "^0.10.5",
     "cors": "^2.8.6",
@@ -35,6 +36,5 @@
   "vitest": {
     "environment": "node",
     "include": ["src/tests/**/*.test.ts"]
-  },
-  "description": ""
+  }
 }
